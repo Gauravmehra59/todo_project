@@ -1,0 +1,48 @@
+{
+  "name": "Todo Project",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "app",
+
+  "workspaceFolder": "/workspaces",
+  "remoteUser": "root",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "eamodio.gitlens",
+        "njpwerner.autodocstring",
+        "KevinRose.vsc-python-indent",
+        "esbenp.prettier-vscode",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml",
+        "aaron-bond.better-comments",
+        "ms-azuretools.vscode-docker",
+        "ms-python.flake8",
+        "ms-python.isort"
+      ]
+    },
+    "settings": {
+      "python.pythonPath": "/usr/local/bin/python",
+      "python.linting.enabled": true,
+      "python.linting.pylintEnabled": true,
+      "python.autoComplete.addBrackets": true,
+
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.formatOnSave": true
+    }
+  },
+
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "protocol": "http",
+      "requireLocalPort": true,
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "remoteEnv": {
+    "HOST": "127.0.0.1"
+  }
+}
