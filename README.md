@@ -1,34 +1,47 @@
 # 📝 To-Do List Project (Django + REST API + Templates)
 
-A complete **To-Do List Web Application** built using **Django**, featuring REST APIs, HTML templates, JavaScript integration, and SQLite database storage.  
-This project follows a clean, scalable folder structure and supports Docker-based deployment.
+A complete **To-Do List Web Application** built with **Django**, featuring REST APIs, HTML templates, JavaScript-based interactions, and SQLite database storage.  
+The project follows a clean, scalable architecture and also supports Docker-based deployment.
 
 ---
 
-## 🚀 Features Overview
+# ⚠️ Important Project Note (Please Read)
 
-### 🔹 API Features (REST)
+This project was intentionally built using **APIs and raw SQL** as part of the assignment requirements.
+
+Because the goal was to emphasize API usage, I made sure to:
+
+- Fetch data **exclusively through APIs**, even in places where Django templates could have supplied the data directly.
+- For example, on the **Task List View**, instead of passing task data through the Django context, the HTML page is rendered first and then populated through a **Fetch API request**.
+- Although many features could have been implemented more simply without APIs, the project was **designed to remain API-driven**, ensuring consistency with the assignment objectives.
+
+This design choice is **intentional** to demonstrate proper API-first architecture.
+
+---
+
+# 🚀 Key Features
+
+### 🔹 REST API Features
 - Create new tasks  
-- List all tasks  
-- Retrieve single task  
-- Update existing task  
-- Delete task (**200 OK**)  
+- Retrieve task list  
+- Retrieve a single task  
+- Update tasks using **PATCH**  
+- Delete tasks (**200 OK**)  
 - JSON-formatted responses  
 
-### 🔹 Frontend Features (Templates + JS)
-- Display tasks in a dynamic table  
-- Add new tasks  
-- Edit tasks  
-- Delete tasks  
-- Fully powered by JavaScript (Fetch API)
+### 🔹 Frontend (Templates + JavaScript)
+- Dynamic HTML table for displaying tasks  
+- Add, edit, and delete tasks  
+- Fully powered by **Fetch API**  
+- API-driven UI without server-side data passing  
 
 ### 🔹 Engineering Highlights
-- SQLite database + raw SQL service layer  
-- Separate **API Views** and **Template Views**  
-- `TaskService` for DB operations  
-- Clean HTML templates  
+- SQLite database using **raw SQL service layer**  
+- Clear separation of **API Views** and **Template Views**  
+- Central `TaskService` for all database operations  
+- Clean, maintainable HTML templates  
 - CSRF-protected forms  
-- Fully testable with pytest  
+- Fully testable with Pytest  
 
 ---
 
@@ -56,7 +69,7 @@ todo_project/
 
 # ⚙️ Installation Guide
 
-## 1️⃣ Clone Repository
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone git@github.com:Gauravmehra59/todo_project.git
@@ -65,62 +78,62 @@ cd todo_project
 
 ---
 
-# 🐳 Running With Docker (Recommended)
+# 🐳 Run Using Docker (Recommended)
 
 ```bash
 docker-compose up --build
 ```
 
-Visit:
+Access the application at:
 
 👉 http://127.0.0.1:8000/
 
 ---
 
-# 🖥 Running Locally (Without Docker)
+# 🖥 Run Locally (Without Docker)
 
-## 2️⃣ Install Requirements
+## 2️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 3️⃣ Apply Migrations
+## 3️⃣ Apply Database Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-## 4️⃣ Start Django Server
+## 4️⃣ Start Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open:
+Open in browser:
 
 👉 http://127.0.0.1:8000/
 
 ---
 
-# 📮 API Endpoints (JSON)
+# 📮 API Endpoints
 
-### ✔ List All Tasks
+### ✔ Get All Tasks
 ```http
 GET /api/list/
 ```
 
-### ✔ Get Single Task
+### ✔ Get Task Details
 ```http
 GET /api/detail/<id>/
 ```
 
-### ✔ Create Task
+### ✔ Create New Task
 ```http
 POST /api/create/
 ```
 
-#### Example Body
+#### Request Example
 ```json
 {
   "title": "Buy Eggs",
@@ -130,7 +143,7 @@ POST /api/create/
 }
 ```
 
-### ✔ Update Task
+### ✔ Update Existing Task
 ```http
 PATCH /api/update/<id>/
 ```
@@ -142,9 +155,9 @@ DELETE /api/delete/<id>/
 
 ---
 
-# 🧪 Running Test Cases
+# 🧪 Running Tests
 
-Run all test cases:
+Run all tests using:
 
 ```bash
 pytest -v
@@ -154,16 +167,16 @@ pytest -v
 
 # 🛠 Tech Stack
 
-- Python 3.12
-- Django
-- HTML / CSS / JavaScript
-- SQLite
-- Docker + Docker Compose
-- Pytest
+- Python 3.12  
+- Django  
+- HTML / CSS / JavaScript  
+- SQLite  
+- Docker & Docker Compose  
+- Pytest  
 
 ---
 
 # ❤️ Author
 
 **Gaurav Mehra**  
-Software Developer
+Software Developer  
