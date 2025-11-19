@@ -95,6 +95,12 @@ DELETE /api/delete/<id>/
 
 ---
 
+## Run Test Cases
+```
+pytest -v
+```
+
+---
 ## 🛠 Tech Stack
 
 - Python 3+
