@@ -132,7 +132,7 @@ POST /api/create/
 
 ### ✔ Update Task
 ```http
-PUT /api/update/<id>/
+PATCH /api/update/<id>/
 ```
 
 ### ✔ Delete Task

@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const { ok, data } = await fetchJSON(`/api/update/${taskId}/`, {
-            method: "PUT",
+            method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
         });

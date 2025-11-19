@@ -109,11 +109,11 @@ def api_detail(request, id):
 @csrf_exempt
 def api_update(request, id):
     """
-    PUT /api/update/<id>/
+    PATCH /api/update/<id>/
     Updates task details.
     """
-    if request.method != "PUT":
-        return JsonResponse({"error": "PUT required"}, status=405)
+    if request.method != "PATCH":
+        return JsonResponse({"error": "PATCH required"}, status=405)
 
     body = parse_json(request)
     if not body:
