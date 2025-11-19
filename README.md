@@ -1,79 +1,126 @@
 # 📝 To-Do List Project (Django + REST API + Templates)
 
-A fully functional **To-Do List Web Application** built using **Django**.
-
-This project includes:
-
-- Full CRUD **REST APIs**
-- Clean **Template-based UI**
-- SQLite database
-- Professional folder structure
-- Easy to run & deploy
+A complete **To-Do List Web Application** built using **Django**, featuring REST APIs, HTML templates, JavaScript integration, and SQLite database storage.  
+This project follows a clean, scalable folder structure and supports Docker-based deployment.
 
 ---
 
-## 🚀 Features
+## 🚀 Features Overview
 
-### 🔹 API Features
-- Create task  
-- Read task  
-- Update task  
-- Delete task (**204 No Content**)  
-- JSON REST API responses  
+### 🔹 API Features (REST)
+- Create new tasks  
+- List all tasks  
+- Retrieve single task  
+- Update existing task  
+- Delete task (**200 OK**)  
+- JSON-formatted responses  
 
-### 🔹 UI Features
-- Add / Edit / Delete tasks  
-- Simple HTML templates  
+### 🔹 Frontend Features (Templates + JS)
+- Display tasks in a dynamic table  
+- Add new tasks  
+- Edit tasks  
+- Delete tasks  
+- Fully powered by JavaScript (Fetch API)
+
+### 🔹 Engineering Highlights
+- SQLite database + raw SQL service layer  
+- Separate **API Views** and **Template Views**  
+- `TaskService` for DB operations  
+- Clean HTML templates  
+- CSRF-protected forms  
+- Fully testable with pytest  
 
 ---
 
-## ⚙️ Installation Guide
+# 📦 Project Structure
 
-### 1️⃣ Clone Repository
 ```
+todo_project/
+│── tasks/
+│   ├── templates/tasks/
+│   ├── static/
+│   ├── services/
+│   ├── api_views.py
+│   ├── web_views.py
+│   └── models.py
+│
+│── todo_project/
+│── tests/
+│── requirements.txt
+│── Dockerfile
+│── docker-compose.yml
+│── manage.py
+```
+
+---
+
+# ⚙️ Installation Guide
+
+## 1️⃣ Clone Repository
+
+```bash
 git clone git@github.com:Gauravmehra59/todo_project.git
 cd todo_project
 ```
 
-### 3️⃣ Install Requirements
-```
-pip install -r requirements.txt
+---
+
+# 🐳 Running With Docker (Recommended)
+
+```bash
+docker-compose up --build
 ```
 
-### 4️⃣ Run Migrations
-```
-python manage.py migrate
-```
+Visit:
 
-### 5️⃣ Start Server
-```
-python manage.py runserver
-```
-
-Open your browser:
-
-http://127.0.0.1:8000/  
+👉 http://127.0.0.1:8000/
 
 ---
 
-## 📮 API Endpoints
+# 🖥 Running Locally (Without Docker)
 
-### ✔ Get All Tasks
+## 2️⃣ Install Requirements
+
+```bash
+pip install -r requirements.txt
 ```
+
+## 3️⃣ Apply Migrations
+
+```bash
+python manage.py migrate
+```
+
+## 4️⃣ Start Django Server
+
+```bash
+python manage.py runserver
+```
+
+Open:
+
+👉 http://127.0.0.1:8000/
+
+---
+
+# 📮 API Endpoints (JSON)
+
+### ✔ List All Tasks
+```http
 GET /api/list/
 ```
 
 ### ✔ Get Single Task
-```
+```http
 GET /api/detail/<id>/
 ```
 
 ### ✔ Create Task
-```
+```http
 POST /api/create/
 ```
 
-#### Example Body:
+#### Example Body
 ```json
 {
   "title": "Buy Eggs",
@@ -84,26 +131,39 @@ POST /api/create/
 ```
 
 ### ✔ Update Task
-```
+```http
 PUT /api/update/<id>/
 ```
 
 ### ✔ Delete Task
-```
+```http
 DELETE /api/delete/<id>/
 ```
 
 ---
 
-## Run Test Cases
-```
+# 🧪 Running Test Cases
+
+Run all test cases:
+
+```bash
 pytest -v
 ```
 
 ---
-## 🛠 Tech Stack
 
-- Python 3+
+# 🛠 Tech Stack
+
+- Python 3.12
 - Django
-- HTML / CSS / JS
-- SQLite (default)
+- HTML / CSS / JavaScript
+- SQLite
+- Docker + Docker Compose
+- Pytest
+
+---
+
+# ❤️ Author
+
+**Gaurav Mehra**  
+Software Developer
