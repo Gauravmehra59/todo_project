@@ -1,0 +1,45 @@
+PROJECT DOCUMENTATION
+=====================
+
+1. OVERVIEW
+-----------
+This Django application uses custom SQL queries (instead of Django ORM migrations) to create and manage the "tasks" table. The project structure separates table creation logic, SQL operations, and Django models used only for admin display.
+
+2. DATABASE INITIALIZATION FLOW
+-------------------------------
+File: tasks/db.py
+
+- Contains a function "init_db()" that:
+  - Checks if the "tasks" table exists.
+  - If the table does not exist, it creates the table and fields like title, description , status and due_date using raw SQL queries.
+- This ensures that the tasks table is automatically created when the application starts for the first time.
+
+How it runs:
+- The init_db() function is imported and executed inside "tasks/urls.py".
+- Since URL configurations load at server startup, the database initialization also runs at startup.
+
+3. SQL SERVICE LAYER
+--------------------
+File: tasks/services/task_service.py
+
+- Contains all SQL operations related to tasks, including:
+  - Insert (Create)
+  - Select (Get)
+  - Update
+  - Delete
+- This keeps all SQL logic centralized and separate from Django views and models.
+
+4. DJANGO MODELS (ADMIN ONLY)
+------------------------------
+File: tasks/models.py
+
+- Contains Django model definitions only for the purpose of displaying data in the Django Admin panel.
+- IMPORTANT:
+  These models do NOT create or modify database tables.
+- The actual table creation is handled only by the "init_db()" function inside tasks/db.py.
+
+Purpose of these models:
+- Allow the Django Admin panel to show and manage task records.
+- Provide read/write access to database data that was created using raw SQL.
+
+
