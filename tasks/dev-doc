@@ -3,7 +3,7 @@ PROJECT DOCUMENTATION
 
 1. OVERVIEW
 -----------
-This Django application uses custom SQL queries (instead of Django ORM migrations) to create and manage the "tasks" table. The project structure separates table creation logic, SQL operations, and Django models used only for admin display.
+This Django application uses custom SQL queries (instead of Django ORM migrations) to create and manage the "tasks" table. The project structure separates table creation logic, SQL operations, frontend JS, and Django models (which are used only for admin display).
 
 2. DATABASE INITIALIZATION FLOW
 -------------------------------
@@ -11,12 +11,13 @@ File: tasks/db.py
 
 - Contains a function "init_db()" that:
   - Checks if the "tasks" table exists.
-  - If the table does not exist, it creates the table and fields like title, description , status and due_date using raw SQL queries.
+  - If the table does not exist, it creates the table using raw SQL queries.
 - This ensures that the tasks table is automatically created when the application starts for the first time.
 
 How it runs:
 - The init_db() function is imported and executed inside "tasks/urls.py".
 - Since URL configurations load at server startup, the database initialization also runs at startup.
+
 
 3. SQL SERVICE LAYER
 --------------------
@@ -28,6 +29,7 @@ File: tasks/services/task_service.py
   - Update
   - Delete
 - This keeps all SQL logic centralized and separate from Django views and models.
+
 
 4. DJANGO MODELS (ADMIN ONLY)
 ------------------------------
@@ -42,4 +44,30 @@ Purpose of these models:
 - Allow the Django Admin panel to show and manage task records.
 - Provide read/write access to database data that was created using raw SQL.
 
+
+5. FRONTEND JAVASCRIPT (CLIENT-SIDE CRUD)
+------------------------------------------
+Folder: tasks/static/
+
+The client-side CRUD operations are handled fully in the browser using JavaScript files. These scripts call the API endpoints and render data on the frontend without page reloads.
+
+Files:
+- create_task.js  
+  - Sends API requests to create a new task.
+  - Handles form submission and validation.
+  - Updates UI after successful creation.
+
+- edit_task.js  
+  - Fetches existing task data.
+  - Sends API requests to update an existing task.
+  - Renders updated data on the client side.
+
+- list_task.js  
+  - Fetches all tasks from the API.
+  - Renders the task list dynamically on the page.
+  - Handles delete actions.
+
+Purpose:
+- All CRUD operations are performed client-side through API calls.
+- No Django template rendering is used for tasks; everything is handled via JS + API.
 
